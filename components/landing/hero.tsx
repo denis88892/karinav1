@@ -13,12 +13,12 @@ const stats = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background">
-      {/* Mobile-first layout: portrait first, then content */}
-      <div className="flex flex-col lg:grid lg:grid-cols-2 lg:max-w-7xl lg:mx-auto">
+    <section className="relative w-full min-h-screen bg-background overflow-hidden">
+      {/* Desktop Layout: Full height with image on right, text on left */}
+      <div className="relative h-screen flex items-center">
         
-        {/* Hero Image - Priority on mobile */}
-        <div className="relative order-first lg:order-last min-h-[45vh] lg:min-h-[100vh]">
+        {/* Hero Image Container - Right side with smoke-screen dissolve */}
+        <div className="absolute inset-y-0 right-0 w-full lg:w-1/2 pointer-events-none">
           <AnimatedScale>
             <Image
               src="/images/hero-portrait.png"
@@ -29,20 +29,20 @@ export function Hero() {
               className="object-cover object-top"
             />
             
-            {/* Powerful misty dissolve mask - left and bottom edges */}
+            {/* Smoke-screen dissolve: sophisticated radial feathered mask */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                maskImage: 'radial-gradient(ellipse 120% 100% at 100% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.4) 65%, rgba(0,0,0,0) 90%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 120% 100% at 100% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.4) 65%, rgba(0,0,0,0) 90%)',
-                background: 'linear-gradient(to top, rgb(251, 249, 246) 0%, rgba(251, 249, 246, 0.6) 20%, transparent 40%), linear-gradient(to right, rgb(251, 249, 246) 0%, rgba(251, 249, 246, 0.8) 15%, rgba(251, 249, 246, 0.5) 30%, transparent 50%)',
+                maskImage: 'radial-gradient(ellipse 140% 130% at 85% 45%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 12%, rgba(0,0,0,0.8) 24%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.2) 58%, rgba(0,0,0,0) 80%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 140% 130% at 85% 45%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 12%, rgba(0,0,0,0.8) 24%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.2) 58%, rgba(0,0,0,0) 80%)',
+                background: '#FBF9F6',
               }}
             />
           </AnimatedScale>
         </div>
 
-        {/* Content */}
-        <div className="flex flex-col justify-center px-5 py-12 md:px-10 lg:py-32 lg:pr-12">
+        {/* Content - Left side, centered vertically */}
+        <div className="relative z-10 w-full lg:w-1/2 px-5 py-12 md:px-10 lg:px-12 lg:py-0 flex flex-col justify-center">
           
           {/* Expert Label */}
           <AnimatedFadeUp>
@@ -53,19 +53,19 @@ export function Hero() {
 
           {/* Main Headline - Elegant serif italic */}
           <AnimatedFadeUp delay={0.1}>
-            <h1 className="mt-6 font-serif text-4xl italic font-medium leading-[1.15] tracking-tight text-foreground text-balance lg:text-5xl">
+            <h1 className="mt-6 font-serif text-4xl lg:text-5xl italic font-medium leading-[1.15] tracking-tight text-foreground lg:max-w-2xl">
               Что ещё станет возможным в вашей жизни, если убрать ограничения в голове?
             </h1>
           </AnimatedFadeUp>
 
           {/* Supporting Text - Uppercase description block */}
           <AnimatedFadeUp delay={0.2}>
-            <p className="mt-8 max-w-xl text-xs uppercase leading-relaxed tracking-wide text-muted-foreground font-medium">
+            <p className="mt-8 max-w-lg text-xs uppercase leading-relaxed tracking-wide text-muted-foreground font-medium">
               Я знаю, что каждый обладает внутренней силой и потенциалом и часто это спрятано под навязанными убеждениями.
             </p>
           </AnimatedFadeUp>
 
-          {/* CTAs */}
+          {/* CTAs - Horizontal buttons */}
           <AnimatedFadeUp delay={0.3} className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href="#contact"
@@ -83,19 +83,20 @@ export function Hero() {
             </a>
           </AnimatedFadeUp>
 
-          {/* Features Bottom Bar */}
-          <AnimatedContainer className="mt-16 grid grid-cols-2 gap-6 sm:grid-cols-4 border-t border-border/40 pt-8 lg:pt-12" staggerDelay={0.08}>
-            {stats.map((s) => (
-              <AnimatedItem key={s.title}>
-                <div className="flex flex-col items-start gap-3 text-center sm:text-left">
-                  <span className="flex size-8 items-center justify-center text-accent/70">
+          {/* Features Bottom Bar - Horizontal layout with dividers */}
+          <AnimatedContainer className="mt-16 flex items-center justify-start gap-0 border-t border-border/40 pt-8 lg:pt-12 lg:gap-8" staggerDelay={0.08}>
+            {stats.map((s, idx) => (
+              <AnimatedItem key={s.title} className="flex items-start gap-4 flex-1 lg:flex-initial pl-0">
+                {idx > 0 && <div className="hidden lg:block h-12 w-px bg-border/30" />}
+                <div className="flex flex-col items-start gap-3">
+                  <span className="flex size-6 items-center justify-center text-accent/70 shrink-0">
                     <s.icon className="size-4" strokeWidth={1.5} />
                   </span>
                   <div>
                     <span className="block text-xs font-semibold text-foreground">
                       {s.title}
                     </span>
-                    <span className="block text-xs text-muted-foreground mt-1">
+                    <span className="block text-xs text-muted-foreground mt-0.5">
                       {s.sub}
                     </span>
                   </div>
