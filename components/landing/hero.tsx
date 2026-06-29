@@ -28,17 +28,14 @@ export function Hero() {
               className="object-cover object-top"
             />
             
-            {/* Blurred organic shape overlay for editorial blend effect */}
+            {/* Blurred gradient overlay for left edge fade */}
             <div
-              className="absolute pointer-events-none"
+              className="absolute top-0 left-0 h-full pointer-events-none"
               style={{
-                width: '70%',
-                height: '80%',
-                top: '10%',
-                left: '-15%',
-                background: 'radial-gradient(ellipse 100% 120% at 30% 45%, rgba(247, 243, 238, 0.8) 0%, rgba(247, 243, 238, 0.5) 25%, rgba(247, 243, 238, 0.2) 50%, rgba(247, 243, 238, 0) 75%)',
-                filter: 'blur(80px)',
-                borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
+                width: '45%',
+                background: 'radial-gradient(ellipse 80% 100% at -20% 50%, rgba(248, 244, 239, 0.95) 0%, rgba(248, 244, 239, 0.7) 30%, rgba(248, 244, 239, 0.3) 60%, rgba(248, 244, 239, 0) 100%)',
+                filter: 'blur(40px)',
+                transform: 'translateX(-25%)',
               }}
             />
             
