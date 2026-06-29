@@ -29,16 +29,15 @@ export function Hero() {
               className="object-cover object-top"
             />
             
-            {/* Smooth gradient fade transition from left to image */}
+            {/* Powerful misty dissolve mask - left and bottom edges */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                background: 'linear-gradient(to right, rgb(251, 249, 246) 0%, rgba(251, 249, 246, 0.7) 25%, rgba(251, 249, 246, 0.3) 45%, transparent 65%)',
+                maskImage: 'radial-gradient(ellipse 120% 100% at 100% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.4) 65%, rgba(0,0,0,0) 90%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 120% 100% at 100% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.4) 65%, rgba(0,0,0,0) 90%)',
+                background: 'linear-gradient(to top, rgb(251, 249, 246) 0%, rgba(251, 249, 246, 0.6) 20%, transparent 40%), linear-gradient(to right, rgb(251, 249, 246) 0%, rgba(251, 249, 246, 0.8) 15%, rgba(251, 249, 246, 0.5) 30%, transparent 50%)',
               }}
             />
-            
-            {/* Soft gradient fade at bottom for mobile */}
-            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background to-transparent lg:hidden" />
           </AnimatedScale>
         </div>
 
