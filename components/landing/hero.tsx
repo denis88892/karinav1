@@ -28,8 +28,10 @@ export function Hero() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-top"
                 style={{
-                  maskImage: 'radial-gradient(ellipse 150% 100% at 85% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 80%)',
-                  WebkitMaskImage: 'radial-gradient(ellipse 150% 100% at 85% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 80%)',
+                  maskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 8%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.85) 16%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 100%)',
+                  WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 8%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.85) 16%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 100%)',
+                  maskSize: '100% 100%',
+                  WebkitMaskSize: '100% 100%',
                 }}
               />
             </div>
