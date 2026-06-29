@@ -13,36 +13,27 @@ const stats = [
 
 export function Hero() {
   return (
-    <section className="relative w-full min-h-screen bg-background overflow-hidden">
-      {/* Desktop Layout: Full height with image on right, text on left */}
-      <div className="relative h-screen flex items-center">
+    <section className="relative w-full min-h-screen bg-[#FBF9F6] overflow-hidden pt-32">
+      {/* Background Image - Right side only */}
+      <div className="absolute top-0 right-0 w-[55%] h-full pointer-events-none">
+        <Image
+          src="/images/hero-portrait.png"
+          alt="Карина Кашина — фасилитатор Access Consciousness"
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 55vw"
+          className="w-full h-full object-cover object-center"
+        />
         
-        {/* Hero Image Container - Right side with smoke-screen dissolve */}
-        <div className="absolute inset-y-0 right-0 w-full lg:w-1/2 pointer-events-none">
-          <AnimatedScale>
-            <Image
-              src="/images/hero-portrait.png"
-              alt="Карина Кашина — фасилитатор Access Consciousness"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-top"
-            />
-            
-            {/* Smoke-screen dissolve: sophisticated radial feathered mask */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                maskImage: 'radial-gradient(ellipse 140% 130% at 85% 45%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 12%, rgba(0,0,0,0.8) 24%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.2) 58%, rgba(0,0,0,0) 80%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 140% 130% at 85% 45%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 12%, rgba(0,0,0,0.8) 24%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.2) 58%, rgba(0,0,0,0) 80%)',
-                background: '#FBF9F6',
-              }}
-            />
-          </AnimatedScale>
-        </div>
+        {/* Perfect fade transition overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FBF9F6] via-[#FBF9F6]/60 to-transparent w-full h-full" />
+      </div>
 
-        {/* Content - Left side, centered vertically */}
-        <div className="relative z-10 w-full lg:w-1/2 px-5 py-12 md:px-10 lg:px-12 lg:py-0 flex flex-col justify-center">
+      {/* Foreground Content Layer */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 h-screen flex flex-col justify-between">
+        
+        {/* Top Content Section */}
+        <div className="w-1/2 flex flex-col justify-center">
           
           {/* Expert Label */}
           <AnimatedFadeUp>
@@ -53,7 +44,7 @@ export function Hero() {
 
           {/* Main Headline - Elegant serif italic */}
           <AnimatedFadeUp delay={0.1}>
-            <h1 className="mt-6 font-serif text-4xl lg:text-5xl italic font-medium leading-[1.15] tracking-tight text-foreground lg:max-w-2xl">
+            <h1 className="mt-6 font-serif text-5xl italic font-medium leading-[1.15] tracking-tight text-foreground max-w-xl">
               Что ещё станет возможным в вашей жизни, если убрать ограничения в голове?
             </h1>
           </AnimatedFadeUp>
@@ -82,29 +73,29 @@ export function Hero() {
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </a>
           </AnimatedFadeUp>
-
-          {/* Features Bottom Bar - Horizontal layout with dividers */}
-          <AnimatedContainer className="mt-16 flex items-center justify-start gap-0 border-t border-border/40 pt-8 lg:pt-12 lg:gap-8" staggerDelay={0.08}>
-            {stats.map((s, idx) => (
-              <AnimatedItem key={s.title} className="flex items-start gap-4 flex-1 lg:flex-initial pl-0">
-                {idx > 0 && <div className="hidden lg:block h-12 w-px bg-border/30" />}
-                <div className="flex flex-col items-start gap-3">
-                  <span className="flex size-6 items-center justify-center text-accent/70 shrink-0">
-                    <s.icon className="size-4" strokeWidth={1.5} />
-                  </span>
-                  <div>
-                    <span className="block text-xs font-semibold text-foreground">
-                      {s.title}
-                    </span>
-                    <span className="block text-xs text-muted-foreground mt-0.5">
-                      {s.sub}
-                    </span>
-                  </div>
-                </div>
-              </AnimatedItem>
-            ))}
-          </AnimatedContainer>
         </div>
+
+        {/* Bottom Features Bar */}
+        <AnimatedContainer className="w-1/2 flex items-center justify-start gap-0 border-t border-border/40 pt-8 pb-16 lg:gap-8" staggerDelay={0.08}>
+          {stats.map((s, idx) => (
+            <AnimatedItem key={s.title} className="flex items-start gap-4 flex-1 lg:flex-initial pl-0">
+              {idx > 0 && <div className="h-12 w-px bg-border/30" />}
+              <div className="flex flex-col items-start gap-3">
+                <span className="flex size-6 items-center justify-center text-accent/70 shrink-0">
+                  <s.icon className="size-4" strokeWidth={1.5} />
+                </span>
+                <div>
+                  <span className="block text-xs font-semibold text-foreground">
+                    {s.title}
+                  </span>
+                  <span className="block text-xs text-muted-foreground mt-0.5">
+                    {s.sub}
+                  </span>
+                </div>
+              </div>
+            </AnimatedItem>
+          ))}
+        </AnimatedContainer>
       </div>
     </section>
   )
