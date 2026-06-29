@@ -14,14 +14,14 @@ const stats = [
 export function Hero() {
   return (
     <section className="relative w-full min-h-screen bg-[#FBF9F6] overflow-hidden pt-32">
-      {/* Background Image - Wider frame, zoomed out for full upper-torso portrait */}
-      <div className="absolute top-0 right-0 w-[70%] h-full pointer-events-none overflow-hidden">
+      {/* Background Image - Reduced 50%, zoomed out for full upper-torso portrait */}
+      <div className="absolute top-0 right-0 w-[35%] h-full pointer-events-none overflow-hidden">
         <Image
           src="/images/hero-portrait.png"
           alt="Карина Кашина — фасилитатор Access Consciousness"
           fill
           priority
-          sizes="(max-width: 1024px) 100vw, 70vw"
+          sizes="(max-width: 1024px) 100vw, 35vw"
           className="w-full h-full object-cover object-left"
           style={{
             maskImage: 'linear-gradient(to right, transparent 0%, rgba(255,255,255,0.2) 5%, rgba(255,255,255,0.5) 20%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%)',
