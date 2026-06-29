@@ -1,40 +1,39 @@
 'use client'
 
-import { ArrowRight, BadgeCheck, Clock, UserRound } from 'lucide-react'
+import { ArrowUpRight, ArrowRight, BadgeCheck, Clock, UserRound } from 'lucide-react'
 import Image from 'next/image'
 import { AnimatedFadeUp, AnimatedScale, AnimatedContainer, AnimatedItem } from '../animated-fade-up'
 
 const stats = [
   { icon: BadgeCheck, title: 'Сертифицированный', sub: 'фасилитатор' },
   { icon: Clock, title: 'Более 5 лет', sub: 'практики' },
-  { icon: UserRound, title: 'Индивидуальный', sub: 'подход' },
-  { icon: UserRound, title: 'Реальные', sub: 'изменения' },
+  { icon: UserRound, title: 'Индивидуальная', sub: 'работа и обучение' },
 ]
 
 export function Hero() {
   return (
-    <section className="relative w-full min-h-screen bg-[#FBF9F6] overflow-hidden pt-32">
-      {/* Background Image - Reduced 50%, zoomed out for full upper-torso portrait */}
-      <div className="absolute top-0 right-0 w-[35%] h-full pointer-events-none overflow-hidden">
-        <Image
-          src="/images/hero-portrait.png"
-          alt="Карина Кашина — фасилитатор Access Consciousness"
-          fill
-          priority
-          sizes="(max-width: 1024px) 100vw, 35vw"
-          className="w-full h-full object-cover object-left"
-          style={{
-            maskImage: 'linear-gradient(to right, transparent 0%, rgba(255,255,255,0.2) 5%, rgba(255,255,255,0.5) 20%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(255,255,255,0.2) 5%, rgba(255,255,255,0.5) 20%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%)',
-          }}
-        />
-      </div>
-
-      {/* Foreground Content Layer */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 h-screen flex flex-col justify-between">
+    <section className="relative overflow-hidden bg-background">
+      {/* Mobile-first layout: portrait first, then content */}
+      <div className="flex flex-col lg:grid lg:grid-cols-2 lg:max-w-7xl lg:mx-auto">
         
-        {/* Top Content Section */}
-        <div className="w-1/2 flex flex-col justify-center">
+        {/* Hero Image - Priority on mobile */}
+        <div className="relative order-first lg:order-last min-h-[45vh] lg:min-h-[100vh]">
+          <AnimatedScale>
+            <Image
+              src="/images/hero-portrait.png"
+              alt="Карина Кашина — фасилитатор Access Consciousness"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-top"
+            />
+            {/* Soft gradient fade at bottom for mobile */}
+            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background to-transparent lg:hidden" style={{ paddingRight: '-1px' }} />
+          </AnimatedScale>
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col justify-center px-5 py-12 md:px-10 lg:py-44 lg:pr-12">
           
           {/* Expert Label */}
           <AnimatedFadeUp>
@@ -43,60 +42,62 @@ export function Hero() {
             </span>
           </AnimatedFadeUp>
 
-          {/* Main Headline - Elegant serif italic */}
+          {/* Main Headline */}
           <AnimatedFadeUp delay={0.1}>
-            <h1 className="mt-6 font-serif text-5xl italic font-medium leading-[1.15] tracking-tight text-foreground max-w-xl">
-              Что ещё станет возможным в вашей жизни, если убрать ограничения в голове?
+            <h1 className="mt-6 font-serif text-4xl font-medium leading-[1.1] tracking-tight text-foreground text-balance lg:text-5xl" style={{ fontSize: '37px' }}>
+              Что ещё возможно для вашей жизни, если убрать шум?
             </h1>
+            <div className="mt-4 h-0.5 w-12 bg-accent" />
           </AnimatedFadeUp>
 
-          {/* Supporting Text - Uppercase description block */}
+          {/* Supporting Text */}
           <AnimatedFadeUp delay={0.2}>
-            <p className="mt-8 max-w-lg text-xs uppercase leading-relaxed tracking-wide text-muted-foreground font-medium">
-              Я знаю, что каждый обладает внутренней силой и потенциалом и часто это спрятано под навязанными убеждениями.
+            <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground lg:text-base">
+              Помогаю освободиться от тревоги, внутренних ограничений и
+              постоянного напряжения, чтобы жить легче, увереннее и с большим
+              количеством возможностей.
             </p>
           </AnimatedFadeUp>
 
-          {/* CTAs - Horizontal buttons */}
+          {/* CTAs */}
           <AnimatedFadeUp delay={0.3} className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
               Записаться на сессию
-              <ArrowRight className="size-4" />
+              <ArrowUpRight className="size-4" />
             </a>
             <a
               href="#training"
-              className="group inline-flex items-center justify-center sm:justify-start gap-2 rounded-full border border-accent/60 px-8 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:bg-accent/5"
+              className="group inline-flex items-center justify-center sm:justify-start gap-2 text-sm font-medium text-foreground"
             >
               Узнать про обучение
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </a>
           </AnimatedFadeUp>
-        </div>
 
-        {/* Bottom Features Bar */}
-        <AnimatedContainer className="w-1/2 flex items-center justify-start gap-0 border-t border-border/40 pt-8 pb-16 lg:gap-8" staggerDelay={0.08}>
-          {stats.map((s, idx) => (
-            <AnimatedItem key={s.title} className="flex items-start gap-4 flex-1 lg:flex-initial pl-0">
-              {idx > 0 && <div className="h-12 w-px bg-border/30" />}
-              <div className="flex flex-col items-start gap-3">
-                <span className="flex size-6 items-center justify-center text-accent/70 shrink-0">
-                  <s.icon className="size-4" strokeWidth={1.5} />
-                </span>
-                <div>
-                  <span className="block text-xs font-semibold text-foreground">
-                    {s.title}
+          {/* Benefits */}
+          <AnimatedContainer className="mt-10 space-y-6 border-t border-border/50 pt-10 lg:space-y-8" staggerDelay={0.08}>
+            {stats.map((s) => (
+              <AnimatedItem key={s.title}>
+                <div className="flex items-start gap-4">
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-border/70 text-foreground/70">
+                    <s.icon className="size-5" strokeWidth={1.5} />
                   </span>
-                  <span className="block text-xs text-muted-foreground mt-0.5">
-                    {s.sub}
-                  </span>
+                  <div className="flex-1">
+                    <span className="block text-sm font-medium text-foreground">
+                      {s.title}
+                    </span>
+                    <span className="block text-xs text-muted-foreground mt-0.5">
+                      {s.sub}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </AnimatedItem>
-          ))}
-        </AnimatedContainer>
+              </AnimatedItem>
+            ))}
+          </AnimatedContainer>
+        </div>
       </div>
     </section>
   )
