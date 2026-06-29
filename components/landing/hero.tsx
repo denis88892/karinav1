@@ -19,14 +19,20 @@ export function Hero() {
         {/* Hero Image - Priority on mobile */}
         <div className="relative order-first lg:order-last min-h-[45vh] lg:min-h-[100vh]">
           <AnimatedScale>
-            <Image
-              src="/images/hero-portrait.png"
-              alt="Карина Кашина — фасилитатор Access Consciousness"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-top"
-            />
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/hero-portrait.png"
+                alt="Карина Кашина — фасилитатор Access Consciousness"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-top"
+                style={{
+                  maskImage: 'radial-gradient(ellipse 150% 100% at 85% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 80%)',
+                  WebkitMaskImage: 'radial-gradient(ellipse 150% 100% at 85% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 80%)',
+                }}
+              />
+            </div>
             {/* Soft gradient fade at bottom for mobile */}
             <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background to-transparent lg:hidden" style={{ paddingRight: '-1px' }} />
           </AnimatedScale>
